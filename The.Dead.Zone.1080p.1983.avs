@@ -1,0 +1,6 @@
+FFVideoSource("D:\Sync\The.Dead.Zone.1983.DEU.BluRay.Remux.1080p.AVC.DTS-HD.MA.2.0-TDD.mkv")
+crop(4,0,-4,0)
+FixCBr(1911,-6).FixCBr(1909,10).ContinuityFixer(left=0, top=0, right=2, bottom=0, radius=10)
+FixCbr(1908,-4).FixCbr(1907,20).FixCBr(1906,8).FixCBr(1905,-6)
+EdgeFixer_ContinuityFixer(left=0, top=0, right=6, bottom=0, radius=100)
+FillBorders(1,2,0,1)
