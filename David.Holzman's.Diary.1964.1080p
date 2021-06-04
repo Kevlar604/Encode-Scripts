@@ -1,0 +1,7 @@
+FFVideoSource("D:\Sync\David.Holzmans.Diary.1967.1080.Kino.Bluray.AVC.LPCM.2.0\00006 - 2 - h264, 1080p24.mkv")
+crop(240,2,-240,0).ContinuityFixer(left=1, top=0, right=1, bottom=0, radius=10)
+ a=last.f3kdb(range=25,Y=100,grainY=10)#deband
+ b=last.f3kdb(Y=45,grainY=0,grainC=0,dynamic_grain=True) #deblock
+ c=last.trim(0,38073)+trim(a,38074,41187)+last.trim(41188,52505)+trim(b,52506,55692)+last.trim(55693,last.FrameCount()-1)
+ a0=a0.crop(240,2,-240,0)
+ c
