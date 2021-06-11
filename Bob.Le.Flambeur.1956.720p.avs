@@ -1,0 +1,12 @@
+FFVideoSource("H:\Bob.le.Flambeur.1956.1080p.BluRay.REMUX.AVC.FLAC.1.0-BLURANiUM.mkv")
+crop(222, 0, -220, -2)
+FixCBr(1477,10)
+FixCBr(1476,-10)
+FixCBr(1475,5)
+FillBorders(left=2, top=0, right=0, bottom=2, mode=0)
+a=f3kdb(range=31, grainY=128, grainC=128, blur_first=true, dynamic_grain=false)
+b=trim(0,11492)+trim(a,11493,11573)+trim(11574,12809)+trim(a,12810,13146)+trim(13147,17002)+trim(a,17003,17146)+trim(17147,28199)+trim(a,28200,28670)+trim(28671,59998)+trim(a,59999,61534)+trim(61535,99294)+trim(a,99295,99375)
+c=trim(99376,109198)+trim(a,109199,112786)+trim(112787,116261)+trim(a,116262,116615)
+d=trim(116616,122959)+trim(a,122960,123415)+trim(123416,140285)+trim(a,140286,140527)+trim(140528,147195)
+e=b+c+d
+e.z_Spline36Resize(986,720,dither="error_diffusion")
