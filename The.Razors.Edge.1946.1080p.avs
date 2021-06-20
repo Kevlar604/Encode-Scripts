@@ -1,0 +1,6 @@
+FFVideoSource("H:\The.Razors.Edge.1946.1080p.BluRay.REMUX.AVC.FLAC.1.0-EPSiLON.mkv")
+crop(240,0,-240,0)
+FixCBr(1439,10)
+FixCBr(1437,10)
+FixCBr(2,5)
+BalanceBorders(0,0,2,0)
