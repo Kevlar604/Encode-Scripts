@@ -1,0 +1,11 @@
+b=FFVideoSource("D:\MGMVideo.mkv")
+b=b.crop(0,20,0,-20)
+b=b.dither_convert_8_to_16
+b=b.smoothlevels16(gamma=0.88)
+b=b.ditherpost(mode=7)
+k=mt_merge(b,b.f3kdb(range=31,dither_algo=3,y=32,cb=35,cr=35,grainy=70,grainc=70,dynamic_grain=true),b.mt_binarize(24,true),u=3,v=4)
+k1=mt_merge(b,b.f3kdb(range=31,dither_algo=3,y=32,cb=35,cr=35,grainy=70,grainc=70,dynamic_grain=true),b.mt_binarize(60.5,true),u=3,v=4)
+k2=mt_merge(b,b.f3kdb(range=31,dither_algo=3,y=32,cb=35,cr=35,grainy=70,grainc=70,dynamic_grain=true),b.mt_binarize(36,true),u=3,v=4)
+k3=mt_merge(b,b.f3kdb(range=31,dither_algo=3,y=32,cb=35,cr=35,grainy=70,grainc=70,dynamic_grain=true),b.mt_binarize(80,true),u=3,v=4)
+d=trim(b,0,25)+trim(k,26,210)+trim(b,211,735)+trim(k1,736,3638)+trim(b,3639,38203)+trim(k2,38204,42077)+trim(b,42078,53553)+trim(k2,53554,55282)+trim(b,55283,64809)+trim(k3,64810,65947)+trim(b,65948,97214)+trim(k2,97215,100210)+trim(b,100211,143378)
+d
