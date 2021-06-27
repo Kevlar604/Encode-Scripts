@@ -1,5 +1,4 @@
 import vapoursynth as vs
-import awsmfunc as awf
 import vsutil
 core = vs.get_core()
 
