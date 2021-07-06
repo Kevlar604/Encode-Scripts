@@ -12,7 +12,7 @@ import adptvgrnMod
 from nnedi3_rpow2 import *
 core = vs.get_core()
 
-#Some of the parts of the script are commented because initially I thought of doing 1080p which failed miserably hece switched to 720p later also the movie is upscaled from 855p so doing 720p makes more sense
+#Some of the parts of the script are commented because initially I thought of doing 1080p which failed miserably hence switched to 720p later also the movie is upscaled from 855p so doing 720p makes more sense
 
 path=r'D:\Sync\Demon Slayer -Kimetsu no Yaiba- Mugen Train Movie v3 2020 1080p BluRay REMUX AVC AC3 5.1 Dual Audio -ZR-.mkv'
 src=core.ffms2.Source(path)
