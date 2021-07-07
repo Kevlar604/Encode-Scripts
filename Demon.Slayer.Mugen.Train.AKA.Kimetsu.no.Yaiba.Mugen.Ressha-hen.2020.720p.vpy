@@ -74,7 +74,7 @@ deband2=core.std.MaskedMerge(deband2,src,smask)
 #14350-26106,29819-30740,30741-42212,59742-137970
 #4179-10151,10152-14379,26107-29818,42212-59741,13791-161090
 #Modifying grains
-src=adptvgrnMod.adptvgrnMod(deband2,strength=0.25, size=1.15, sharp=75, static=True)
+deband2=adptvgrnMod.adptvgrnMod(deband2,strength=0.25, size=1.15, sharp=75, static=True)
 src=adptvgrnMod.adptvgrnMod(deband1,strength=0.25, size=1.15, sharp=75, static=True)
 src=fvf.rfs(src,deband2,"[4179 10151][26107 29818][42212 59741][13791 161090]")
 src=vsutil.depth(src,8,dither_type='error_diffusion')
