@@ -14,8 +14,8 @@ src=core.lsmas.LWLibavSource(path)
 src=video=core.std.Crop(clip=src, left=248, right=248, top=0, bottom=0)
 nw=round(720 / src.height / 2 * src.width) * 2
 src=core.resize.Spline36(src,nw,720,dither_type='error_diffusion')
-video=src
 src=depth(src,16)
+
 #Fixing dirty lines
 src=core.cf.ContinuityFixer(src,left=[4,4,4],right=[4,4,4],top=[4,4,4],bottom=[4,4,4])
 
