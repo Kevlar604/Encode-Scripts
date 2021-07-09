@@ -19,7 +19,7 @@ src=depth(src,16)
 #Fixing dirty lines
 src=core.cf.ContinuityFixer(src,left=[4,4,4],right=[4,4,4],top=[4,4,4],bottom=[4,4,4])
 
-#Denoisingremoving random white and black dots ,moderate fixing of randi=om white lines
+#Denoising removing random white and black dots ,moderate fixing of randi=om white lines
 lmask=kgf.retinex_edgemask(get_y(src)).std.Binarize(5140).std.Minimum(coordinates=[1, 0, 1, 0, 0, 1, 0, 1])
 ds=lot.DeSpot(src)
 ds=core.std.MaskedMerge(src,ds,lmask)
