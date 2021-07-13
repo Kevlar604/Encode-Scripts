@@ -54,7 +54,6 @@ db=core.std.MaskedMerge(db,src,mask)
 db1=core.neo_f3kdb.Deband(src, range=20, y=48, cb=32, cr=32, grainy=10, grainc=0,dynamic_grain=True)
 db1=core.std.MaskedMerge(db1,src,imask)
 db1=adptvgrnMod(db1, strength=0.5,size=0.8,static=False,luma_scaling=6)
-e=core.lsmas.LWLibavSource(r'D:\Test\1080p130.mkv')
 src=fvf.rfs(src,db,"[82794 85615][159145 160585][171442 177499]")
 src=fvf.rfs(src,db1,"[103 6298]")
 
