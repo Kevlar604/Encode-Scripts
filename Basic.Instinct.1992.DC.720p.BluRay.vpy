@@ -19,10 +19,12 @@ src=depth(src,16)
 #Fixing dirty lines
 src=core.cf.ContinuityFixer(src,top=[3,3,3],bottom=[3,3,3],radius=60)
 src=core.fb.FillBorders(src, left=1, right=1, top=3, bottom=3,mode="fillmargins")
-h=round(1280 / src.width / 2 * src.height) * 2
 
 #Resizing
+h=round(1280 / src.width / 2 * src.height) * 2
 src=core.resize.Spline36(src,1280,h,dither_type='error_diffusion')
+
+#Extracting luma plane for the masks
 y=get_y(src)
 
 #Defining Extended Russell Kirsch compass operator(5*5 matrices)for better detection of edges
