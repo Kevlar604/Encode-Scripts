@@ -15,9 +15,9 @@ path=Path("D:\Test\Battle.Beyond.the.Stars.1980.1080p.BluRay.Remux.AVC.DTS-HD.MA
 #importing video
 src=video=core.lsmas.LWLibavSource(path)
 
-#Fixing dirty lines 
-
+#Cropping black bars
 src=core.std.Crop(src,top=22,left=0,bottom=22,right=0)
+
 #dither
 src=depth(src,16)
 
