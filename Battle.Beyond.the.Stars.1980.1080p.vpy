@@ -32,8 +32,6 @@ deband=adptvgrnMod(deband,strength=0.8,cstrength=0.7,size=1.1,sharp=35,static=Fa
 deband=core.std.MaskedMerge(src,deband,logomask)
 src=fvf.rfs(src,deband,"[60 191]")
 
-
-
 #Fixing credits,sharpening,dehaloing and whitening
 y=get_y(src)
 warpmask=core.std.Sobel(y).std.Binarize(50000).std.Maximum().std.Maximum().std.Inflate()
