@@ -43,8 +43,6 @@ mask_inner=iterate(mask_outer, core.std.Minimum, 3)
 halos=core.std.Expr([mask_outer, mask_inner], 'x y -')
 dh=hvf.DeHalo_alpha(warp,rx=1.5,ry=1.5)
 warp=core.std.MaskedMerge(warp,dh,halos).std.Expr('x 50000 >= 65535 x ?')
-
-#Applying only to credit scenes
 src=fvf.rfs(src,warp,"[144502 147605]")
 
 #dithering down to 8 bit
