@@ -24,7 +24,7 @@ src=blank+src
 s=s2
 s2=s2+b2
 s3=core.std.ShufflePlanes([src,s2],planes=[0, 1, 2], colorfamily=vs.YUV)
-s3=fvf.rfs(s3,s2,"[0 2300]")
+s3=fvf.rfs(s3,s2,"[0 2300]")#Replacing merged source intro scenes with the criterion source
 
 #Replacing the merged end credit scenes with only the criterion source
 s3=s3[0:182083]+s[182083: ] 
