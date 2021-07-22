@@ -11,8 +11,8 @@ core.num_threads = 4
 core.max_cache_size = 2048
 
 #Importing the sources,croping black borders and matching fps of two sources 
-src=core.lsmas.LWLibavSource(r'D:\Test\Manila.in.the.Claws.of.Light.1975.1080p.BluRay.REMUX.AVC.FLAC.1.0-C0M3T.mkv')
-s2=core.lsmas.LWLibavSource(r'D:\Test\video.h264')
+src=core.lsmas.LWLibavSource(r'D:\Test\Manila.in.the.Claws.of.Light.1975.1080p.BluRay.REMUX.AVC.FLAC.1.0-C0M3T.mkv')#BFI Source
+s2=core.lsmas.LWLibavSource(r'D:\Test\video.h264')#Criterion Source
 src=core.std.Crop(src,left=0,top=22,right=0,bottom=22)
 s2=core.std.Crop(s2,left=0,top=22,right=0,bottom=22)
 s2=core.std.AssumeFPS(s2,fpsnum=24000,fpsden=1000)
