@@ -45,7 +45,7 @@ sx=core.std.Convolution(y,[-5,-4,0,4,5,-8,-10,0,10,8,-10,-20,0,20,10,-8,-10,0,10
 sy=core.std.Convolution(y,[-5,-8,-10,-8,-5,-4,-10,-20,-10,-4,0,0,0,0,0,4,10,20,10,4,5,8,10,8,5])
 
 """
-Now I need to find the rate of change of gradient. This can be done by using four extended laplacian parameters or running the sobel 5*5 twice along both horizontal and vertical direction.
+Now I need to find the rate of change of gradient. This can be done by using four extended laplacian parameters or running the sobel 5*5 again along both horizontal and vertical direction.
 I chose 3*3 Sobel mask this time because using 5*5 due to the presence of heavy grain will detect outliers or will simply pickup noise whic I don't need. In short this detects ridges.
 For high grain source like this muvsfunc's ridge detection is also good but it simply pickup too much noise running Knn_means_cl afterwards to denoise is preferable but it's also slow so I avoided this approach."""
 
