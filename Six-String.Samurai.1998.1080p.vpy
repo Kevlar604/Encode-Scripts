@@ -63,7 +63,7 @@ FDOG=[[1, 1, 0, -1, -1, 2, 2, 0, -2, -2, 3, 3, 0, -3, -3, 2, 2, 0, -2, -2, 1, 1,
 mag=[core.std.Convolution(y,m[:25],divisor=2,saturate=False)for m in FDOG]
 mag=core.std.Expr(mag,'x dup * y dup * + sqrt')
 
-res=core.std.Expr([sxx,sxy,syx,syy,mag],'x abs y abs max z abs max a abs max b + 65535 min')#Finding max rate of change of gradient add the FDOG operator and clamping it to 16 bit.
+res=core.std.Expr([sxx,sxy,syx,syy,mag],'x abs y abs max z abs max a abs max b + 65535 min')#Finding max rate of change of gradient adding the FDOG operator and clamping it to 16 bit.
 
 #Inverting the mask as it helps me to visualize where I want to deband and using expr to binarize the mask.
 mask=core.std.Invert(res).std.Expr('x 60000 > x 0 ? ')
@@ -75,7 +75,7 @@ deband=core.std.MaskedMerge(src,deband,mask)#debanding whiter regions given by t
 src=fvf.ReplaceFrames(src,deband,"[82427 90619]")
 src=vsutil.depth(src,8,dither_type='error_diffusion')
 
-#test
+#For test encodes
 #test=src[82427:90620] for testing problematic scenes
 #test.set_output()
 #src=awf.SelectRangeEvery(src, every=15000, length=250, offset=[1000, 5000]) #for testing random frames
