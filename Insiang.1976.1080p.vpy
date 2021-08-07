@@ -46,10 +46,8 @@ ridge=depth(ridge,16,dither_type='error_diffusion').std.Binarize(25000).std.Maxi
 
 #Building a gradient mask to deband chroma at darker scenes
 grad=lutspa(src, mode="relative",relative=True,biased=True,expr="y x 0.00000001 + / atan",chroma=None)
+#Brightening the mask
 grad=awf.fixlvls(grad, gamma=1.1)
-
-#grad=core.std.PlaneStats(grad)
-#grad=core.text.FrameProps(grad)
 
 #Conditional filtering(deband) based on content light
 def conditionalfilter(n, f, clip,filter1,filter2):
