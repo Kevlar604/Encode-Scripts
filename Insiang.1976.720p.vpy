@@ -94,6 +94,7 @@ mask4=kgf.retinex_edgemask(deband2).std.PlaneStats()
 
 #conditonal filtering
 src=src.std.FrameEval(partial(conditionalfilter,clip=src,filter1=deband1,filter2=deband2),[mask2,mask3,mask4])
+s=depth(s,8,dither_type='error_diffusion')
 src=depth(src,8,dither_type='error_diffusion')
 
 #Excluding the intro and end credit scenes from conditional filtering
