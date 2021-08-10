@@ -26,7 +26,7 @@ src=rektlvls(src,rownum=[0,1079],rowval=[5]*2)
 w=round(720 / src.height / 2 * src.width) * 2
 src=core.resize.Spline36(src,w,720,dither_type='error_diffusion')
 
-#Storing the sorce video videonode into new a new variable for future reference 
+#Storing the sorce video videonode into a new variable for future reference 
 s=src
 
 #defining Sobel edgemask
