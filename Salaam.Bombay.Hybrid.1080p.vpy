@@ -53,7 +53,7 @@ fix=awf.bbmod(src,left=2,top=2,right=1,bottom=1,blur=12,planes=[0,1,2],thresh=10
 #Replacing BFI end credits and blank scenes with Kino end credits 
 src=fvf.rfs(src,fix,"[159882 164615]")
 
-#Performing bunch of deblocking and debanding techniques based on scenes. Added grains to hide blocky artefacts and brighten the BFI source as the BFI source has bit of an incorrect levels for dark scenes. Black is almost outside of tv range instead of tinkering the std.levels used grains to brighten them up.
+#Performing bunch of deblocking and debanding techniques based on scenes. Added grains to hide blocky artefacts and to brighten the BFI source as the BFI source has bit of an incorrect levels for dark scenes. Black is almost outside of tv range instead of tinkering the std.levels used grains to brighten them up.
 planes=[core.std.ShufflePlanes(src, planes=x, colorfamily=vs.GRAY) for x in range(3)]
 mask=kgf.retinex_edgemask(planes[0]).std.Binarize(40000).std.Maximum().std.Inflate()
 planes[0]=core.placebo.Deband(planes[0],threshold=6, radius=36.0, grain=50)
@@ -73,6 +73,7 @@ db4=core.std.MaskedMerge(db4,src,mask)
 dbn=fvf.rfs(dbn,db4,"[28661 30021]")
 db5=core.neo_f3kdb.Deband(src,range=25, y=48, cb=56, cr=56, grainy=20, grainc=40,dynamic_grain=False)
 db5=adptvgrnMod(db5,strength=1,cstrength=1.1,size=1.5,sharp=60,static=True, luma_scaling=4)
+db5=core.std.MaskedMerge(db5,src,mask)
 dbn=fvf.rfs(dbn,db5,"[32803 42948],[75574 84708]") 
 src=fvf.rfs(src,dbn,"[909 159881]")
 
