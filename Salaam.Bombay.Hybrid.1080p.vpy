@@ -72,7 +72,7 @@ db4=adptvgrnMod(db4,strength=.6,cstrength=.5,size=1.15,sharp=60,static=False, lu
 db4=core.std.MaskedMerge(db4,src,mask)
 dbn=fvf.rfs(dbn,db4,"[28661 30021]")
 db5=core.neo_f3kdb.Deband(src,range=25, y=48, cb=56, cr=56, grainy=20, grainc=40,dynamic_grain=False)
-db4=adptvgrnMod(db4,strength=1,cstrength=1.1,size=1.5,sharp=60,static=True, luma_scaling=4)
+db5=adptvgrnMod(db5,strength=1,cstrength=1.1,size=1.5,sharp=60,static=True, luma_scaling=4)
 dbn=fvf.rfs(dbn,db5,"[32803 42948],[75574 84708]") 
 src=fvf.rfs(src,dbn,"[909 159881]")
 
