@@ -65,7 +65,7 @@ dbn=core.std.MaskedMerge(dbn,src,mask)
 dbn=fvf.rfs(dbn,dbn1,"[909 3810]")
 dbn2=sizedgrn(dbn, strength=.1, size=0.65, sharp=40,static=False)
 dbn=fvf.rfs(dbn,dbn2,"[4745 5763]")
-db3=fvf.gf3(src,thr=1, elast=3, mask=0)
+db3=fvf.gf3(src,thr=1, elast=3, mask=0)#For some fading scenes
 dbn=fvf.rfs(dbn,db3,"[7624 7675]")
 db4=core.neo_f3kdb.Deband(src,range=25, y=64, cb=64, cr=64, grainy=10, grainc=10, sample_mode=4, output_depth=16)
 db4=adptvgrnMod(db4,strength=.6,cstrength=.5,size=1.15,sharp=60,static=False, luma_scaling=8)
