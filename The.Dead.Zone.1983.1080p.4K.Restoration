@@ -1,1 +1,34 @@
 
+import vapoursynth as vs
+import awsmfunc as awf
+import kagefunc as kgf
+from vsutil import depth
+import fvsfunc as fvf
+from adptvgrnMod import adptvgrnMod
+core = vs.get_core()
+
+core.num_threads = 4
+core.max_cache_size = 2048
+
+#importing source
+src=core.lsmas.LWLibavSource(r'D:\Test\The.Dead.Zone.1983.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-SF.mkv')
+
+#Cropping black borders
+src=core.std.Crop(src,top=22,bottom=22)
+src=depth(src,16)
+
+#Fixing dirty lines
+src=core.cf.ContinuityFixer(src,left=0,top=[2,0,0], right=0, bottom=0,radius=1000)
+src=awf.fb(src,top=1,planes=[1,2])
+src=awf.fb(src,left=1,right=1,bottom=1)
+
+#Debanding the intros
+deband=src.f3kdb.Deband(range=26,y=64,cr=60,cb=60,grainy=10,grainc=10,dynamic_grain=True, keep_tv_range=True, output_depth=16)
+mask=kgf.retinex_edgemask(src).std.Binarize(7000).std.Invert().std.Maximum()
+deband=adptvgrnMod(deband,strength=0.4,cstrength=0.4,size=0.6,sharp=60,grain_chroma=True,static=False,grainer=None,luma_scaling=3)
+deband=core.std.MaskedMerge(deband,src,mask)
+src=fvf.rfs(src,deband,"[26 4200]")
+src=depth(src,8,dither_type='error_diffusion')
+
+#Final output
+src.set_output()
