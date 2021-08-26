@@ -33,7 +33,7 @@ db2=core.neo_f3kdb.Deband(src,range=25,y=64,cb=45,cr=45,grainy=30,grainc=20,blur
 db2=adptvgrnMod(db2,strength=.6,cstrength=.4,size=0.6,sharp=70,static=False,luma_scaling=5,grain_chroma=True,grainer=None,fade_edges=True,tv_range=True)
 mask2=kgf.retinex_edgemask(luma).std.Expr('x 10000 <= 0 x ?')
 db2=core.std.MaskedMerge(db2,src,mask2)
-src=fvf.rfs(src,db2,"{23321,23461][63350 63940]")
+src=fvf.rfs(src,db2,"[23321,23461][63350 63940]")
 
 #Dithering down to 8 bit depth
 src=core.fmtc.bitdepth(src,bits=8,dmode=7)
