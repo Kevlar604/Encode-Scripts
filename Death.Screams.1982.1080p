@@ -1,0 +1,52 @@
+import vapoursynth as vs
+from vapoursynth import core
+from vsutil import depth
+from adptvgrnMod import adptvgrnMod
+import vsTAAmbk as taa
+import kagefunc as kgf
+import fvsfunc as fvf
+
+
+core.num_threads = 4
+core.max_cache_size = 2048
+
+#Importing source
+src=core.lsmas.LWLibavSource(r'D:\Test\Death Screams 1982 1080p Blu-ray AVC LPCM 1.0\DEATH SCREAMS\BDMV\STREAM\00002.m2ts')
+
+#Cropping
+src=core.std.Crop(src,top=22,bottom=22)
+
+#Dithering to 16 bit depth for filtering
+src=depth(src,16)
+
+#Mask for debanding
+mask=kgf.retinex_edgemask(src).std.Binarize(30000).std.Maximum().std.Deflate()
+
+#Debanding and adding grain
+deb=fvf.gf3(src,thr=1, elast=3, mask=0)
+deb=core.std.MaskedMerge(deb,src,mask)
+deb=adptvgrnMod(deb,strength=3,cstrength=0,grain_chroma=False,size=1.5,sharp=80,static=False,luma_scaling=90,seed=3)
+
+#Defining a dictionary for providing kwargs for Nnedi3 antialiaser
+nnargs=dict( 
+        dh=True,
+        nsize=3,
+        nns=3,
+        qual=2,
+        etype=1,
+        pscrn=4,
+        opt=True,
+        exp=2
+    )
+
+out=taa.TAAmbk(src,aatype='Nnedi3',strength=0.5,**nnargs)#Antialiasing
+flt=core.warp.AWarpSharp2(out)#Sharpening
+
+flt=depth(flt,8,dither_type='error_diffusion')
+deb=depth(deb,8,dither_type='error_diffusion')
+src=depth(src,8,dither_type='error_diffusion')
+
+src=fvf.rfs(src,flt,"[0 270]")
+src=fvf.rfs(src,deb,"[64390 65690][89491 90764][123400 127466]")
+
+src.set_output()
