@@ -1,7 +1,5 @@
 import vapoursynth as vs
-import vsutil
-import awsmfunc as awf
-import btpfunc as btp
+from vsutil import depth
 core = vs.get_core()
 
 src=core.lsmas.LWLibavSource(r'D:\Test\The.Social.Network.2010.2160p.UHD.BluRay.REMUX.DV.HDR.HEVC.Atmos-TRiToN_track1_[eng].hevc')
