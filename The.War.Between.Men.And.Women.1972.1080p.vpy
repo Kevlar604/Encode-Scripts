@@ -9,6 +9,9 @@ core = vs.get_core()
 
 src=core.lsmas.LWLibavSource(r'D:\Test\The War Between Men and Women\video.h264')
 
+#Resizing 
+src=core.resize.Spline36(src,1280,720,dither_type="error_diffusion")
+
 src=depth(src,16)
 #Generating mask for the purpose of debanding
 mask=lvf.mask.detail_mask(src,sigma=2,brz_a=0.0250, brz_b=0.250).std.Binarize(20000)
