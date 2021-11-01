@@ -7,7 +7,7 @@ core = vs.get_core()
 
 src=core.lsmas.LWLibavSource(r'D:\Test\The.Man.from.Colorado.1948.1080p.BluRay.REMUX.AVC.FLAC.2.0-EPSiLON.mkv')
 src=core.std.Crop(src,left=240,right=240)
-vid=core.resize.Spline36(src,960,720,dither_type='error_diffusion')
+#vid=core.resize.Spline36(src,960,720,dither_type='error_diffusion')
 src=depth(src,16)
 w=round(720 / src.height / 2 * src.width) * 2
 src=awf.bbmod(src,top=3,bottom=3,blur=15,thresh=2000)
