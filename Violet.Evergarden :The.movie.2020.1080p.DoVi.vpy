@@ -27,7 +27,7 @@ nh=round(1920 /src.width / 2 * src.height)* 2
 
 src=depth(src,16)
 
-#Dering and dehaloing
+#Deringing and dehaloing
 src=core.warp.AWarpSharp2(src, type=1, depth=[6,3,3], thresh=64, cplace="mpeg2") #Sharpening
 dh=FineDehalo(src,darkstr=0,brightstr=0.7,showmask=0,thmi=20,thma=100,rx=2.4,ry=2.4) #Dehaloing
 
@@ -92,12 +92,12 @@ db=f32kdb(denoise)
 #Detail preserving edgemask
 mask=kgf.retinex_edgemask(src, sigma=0.2)
 
-Masked filtering with the help of edgemask
+#Masked filtering with the help of edgemask
 db=core.std.MaskedMerge(db,src,mask)
 
-Adding grains to the grain starved debanded scenes
+#Adding grains to the grain starved debanded scenes
 db=adptvgrnMod(db,strength=1,cstrength=1,grain_chroma=True,size=.5,sharp=80,static=True,luma_scaling=40,seed=3)
 
-Finally dithering down to 10 bit
+#Finally dithering down to 10 bit depth
 src=depth(db,10,dither_type='error_diffusion')
 src.set_output() #output
